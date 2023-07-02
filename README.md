@@ -4,6 +4,7 @@ a helper package to filter fields of structs in various ways
 
 ## Releases
 
+* v0.1.1 "added tolower parameter to GetStructFieldNamesByTagsValues function"
 * v0.1.0 "initial release"
 
 ## Description
@@ -28,7 +29,7 @@ Furthermore a series of helper functions are exported, since we assume additiona
 
 ## Usage
 
-Examples:
+Examples: available here as well: [https://goplay.tools/snippet/p2fH9EHDvGa](https://goplay.tools/snippet/p2fH9EHDvGa)
 
 ```go
 package main

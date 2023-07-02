@@ -19,7 +19,7 @@ const filterTagString = "filter"
 
 // @@Summary EmptyFilteredFields returns a copy of the source struct (MUST USE A POINTER) where all fields with filter-tags matching filterValuesToEmpty set to empty values for the respective type.
 func EmptyFilteredFields(source any, tagsValuesToEmpty map[string][]string) any {
-	affectedFieldNames := GetStructFieldNamesByTagsValues(source, tagsValuesToEmpty)
+	affectedFieldNames := GetStructFieldNamesByTagsValues(source, tagsValuesToEmpty, false)
 	// make a copy of the source struct
 	destination := CreateStructCopy(source)
 	// reset all affected fields to their zero values
@@ -87,13 +87,17 @@ func createFilteredStructFields(sourceType reflect.Type, filterValuesToKeep []st
 }
 
 // this function takes a struct and returns a slice of strings containing the names of the fields that have the given combination of a map[string]any with tags and values
-func GetStructFieldNamesByTagsValues(source any, tagsValues map[string][]string) []string {
+func GetStructFieldNamesByTagsValues(source any, tagsValues map[string][]string, tolower bool) []string {
 	sourceType := reflect.TypeOf(source).Elem()
 	var filteredFields []string
 	for i := 0; i < sourceType.NumField(); i++ {
 		field := sourceType.Field(i)
 		if FieldHasTagsValues(field, tagsValues, nil) {
-			filteredFields = append(filteredFields, field.Name)
+			if tolower {
+				filteredFields = append(filteredFields, strings.ToLower(field.Name))
+			} else {
+				filteredFields = append(filteredFields, field.Name)
+			}
 		}
 	}
 	return filteredFields
