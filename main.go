@@ -6,7 +6,7 @@ import (
 )
 
 // @title structfilter package
-// @version 0.1.0
+// @version 0.1.1
 // @description a helper package to filter fields of structs in various ways
 
 // @contact.name Toni
