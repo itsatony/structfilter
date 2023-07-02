@@ -1,9 +1,19 @@
-package main
+package structfilter
 
 import (
 	"reflect"
 	"strings"
 )
+
+// @title structfilter package
+// @version 0.1.0
+// @description a helper package to filter fields of structs in various ways
+
+// @contact.name Toni
+// @contact.email i@itsatony.com
+
+// @license.name Unlicense
+// @license.url http://unlicense.org/
 
 const filterTagString = "filter"
 

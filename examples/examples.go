@@ -1,9 +1,9 @@
-package examples
+package main
 
 import (
 	"fmt"
 
-	structfilter "github.com/itsatony/structfilter"
+	"github.com/itsatony/structfilter"
 )
 
 type SourceStruct struct {
@@ -13,7 +13,7 @@ type SourceStruct struct {
 	Field4 bool
 }
 
-func examples() {
+func main() {
 	// filter to keep all public fields
 	source := SourceStruct{
 		Field1: "public",
