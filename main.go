@@ -69,7 +69,7 @@ func createFilteredStructFields(sourceType reflect.Type, filterValuesToKeep []st
 		tagMapToRemove := map[string][]string{
 			filterTagString: filterValuesToRemove,
 		}
-		if fieldHasTagsValues(field, tagMapToKeep, tagMapToRemove) {
+		if FieldHasTagsValues(field, tagMapToKeep, tagMapToRemove) {
 			filteredFields = append(filteredFields, field)
 		}
 	}
