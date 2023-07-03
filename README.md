@@ -4,6 +4,7 @@ a helper package to filter fields of structs in various ways
 
 ## Releases
 
+* v0.1.2 "added GetAllStructFieldNamesAndTypes"
 * v0.1.1 "added tolower parameter to GetStructFieldNamesByTagsValues function"
 * v0.1.0 "initial release"
 

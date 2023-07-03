@@ -6,7 +6,7 @@ import (
 )
 
 // @title structfilter package
-// @version 0.1.1
+// @version 0.1.2
 // @description a helper package to filter fields of structs in various ways
 
 // @contact.name Toni
@@ -112,6 +112,17 @@ func GetAllStructFieldNames(source any) []string {
 		fieldNames = append(fieldNames, field.Name)
 	}
 	return fieldNames
+}
+
+// this function takes a struct and returns a map of strings to strings containing the names of all of its fields and their types
+func GetAllStructFieldNamesAndTypes(source any) map[string]string {
+	sourceType := reflect.TypeOf(source)
+	fieldNamesAndTypes := make(map[string]string)
+	for i := 0; i < sourceType.NumField(); i++ {
+		field := sourceType.Field(i)
+		fieldNamesAndTypes[field.Name] = field.Type.String()
+	}
+	return fieldNamesAndTypes
 }
 
 // this function copies all matching fields by name and type from the source struct to the destination struct
