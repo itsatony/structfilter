@@ -109,7 +109,10 @@ func main() {
 		Field3: true,
 		Field4: true,
 	}
-	emptyFields := structfilter.EmptyFilteredFields(&source, map[string][]string{"filter": {"admin"}})
+	emptyFields, err := structfilter.EmptyFilteredFields(&source, map[string][]string{"filter": {"admin"}})
+	if err != nil {
+		panic(err)
+	}
 	fmt.Println("(5) filter to empty the fields listed BEFORE:", source)
 	fmt.Println("(5) filter to empty the fields listed AFTER:", emptyFields)
 
@@ -160,11 +163,14 @@ func main() {
 			},
 		},
 	}
-	emptyfields := structfilter.EmptyFilteredFields(&question, map[string][]string{"filter": {"spoiler"}})
+	emptyfields, err := structfilter.EmptyFilteredFields(&question, map[string][]string{"filter": {"spoiler"}})
+	if err != nil {
+		panic(err)
+	}
 	filteredQuestion, castOkay := emptyfields.(*QuizQuestion)
 	if !castOkay {
-		fmt.Println(fmt.Sprintf("Could not cast filtered question to QuizQuestion\n"))
+		fmt.Printf("Could not cast filtered question to QuizQuestion\n")
 		return
 	}
-	fmt.Println(fmt.Sprintf("Filtered question: %v\n", filteredQuestion))
+	fmt.Printf("Filtered question: %v\n", filteredQuestion)
 }
